@@ -1,0 +1,24 @@
+{
+  "name": "yelp-camp",
+  "version": "1.0.0",
+  "description": "Web application developed with Node.js and Express.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JuanHenriquez/yelp-camp.git"
+  },
+  "author": "Juan Henriquez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JuanHenriquez/yelp-camp/issues"
+  },
+  "homepage": "https://github.com/JuanHenriquez/yelp-camp#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "ejs": "^2.4.1",
+    "express": "^4.13.4"
+  }
+}
