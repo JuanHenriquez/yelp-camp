@@ -1,0 +1,35 @@
+<% include partials/header %>
+
+
+<div class="parallax-container" id="campground-parallax">
+    <div class="parallax">
+        <img src="/img/forest-banner.jpg" alt="Forest Picture"/>
+    </div>
+    <div class="bg-overlay">
+        <div class="main-title">
+            <h1>Campgrounds</h1>
+            <a href="/campgrounds/new" class="btn waves-effect waves-dark teal darken-3">Add new Campground</a>
+        </div>
+    </div>
+</div>
+<div class="section" id="campgrounds-section">
+    <div class="container">
+        <div class="row">
+            <% campgrounds.forEach(function(camp){ %>
+                <div class="col s12 m4">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="<%= camp.image %>" alt="Imagen"/>
+                            <span class="card-title"><a><%= camp.name %></a></span>
+                        </div>
+                        <div class="card-content">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta, qui!</p>
+                        </div>
+                    </div>
+                </div>
+            <% }); %>
+        </div>
+    </div>
+</div>
+
+<% include partials/footer %>
