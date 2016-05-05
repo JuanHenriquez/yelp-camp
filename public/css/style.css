@@ -72,6 +72,10 @@ nav i {
     width: 1200px;
 }
 
+.section-title {
+  text-align: center;
+}
+
 /*
 * ====================
 * HOME PAGE ==========
@@ -131,4 +135,20 @@ HEADER
 
 #campground-parallax .main-title h1 {
    margin-bottom: 20px;
+}
+
+/*
+* ===================================
+* NEW CAMPGROUND FORM PAGE ==========
+* ===================================
+*/
+
+#newCampgroundSection {
+  background-color: #eeeeee;
+}
+
+#newCampgroundForm {
+  max-width: 50%;
+  margin: 0 auto;
+  text-align: center;
 }
