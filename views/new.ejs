@@ -1,10 +1,28 @@
 <% include partials/header %>
 
-<h1>Create a new Bootcamp</h1>
-<form action="/campgrounds" method="post">
-    <input type="text" name="name" placeholder="Name:"/>
-    <input type="text" name="img" placeholder="Picture: "/>
-    <button type="submit">Send -></button>
-</form>
+<div class="section" id="newCampgroundSection">
+	<div class="container">
+		<div class="row">
+			<div class="col s12">
+				<div class="section-title">
+					<h1>Create a new Campground!</h1>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col s12">
+				<div class="section-content">
+					<form action="/campgrounds" method="post" id="newCampgroundForm" class="card">
+					    <div class="card-content">
+					    	<input type="text" name="name" placeholder="Name:"/>
+					    	<input type="text" name="img" placeholder="Picture: "/>
+					    	<button type="submit" class="btn waves-effect waves-dark teal darken-3" id="btnSubmitForm">Send</button>
+					    </div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 <% include partials/footer %>
