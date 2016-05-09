@@ -1,0 +1,45 @@
+<% include ../partials/header %>
+
+<div class="section grey darken-4" id="showCampSection">
+	<div class="container">
+		<div class="row">
+			<div class="col s12 m3">
+				<div class="card">
+					<div class="collection">
+						<div class="card-content">
+							<h5 class="center-align without-margin">Categories</h5>
+						</div>
+						<a href="#!" class="collection-item">Category 1</a>
+						<a href="#!" class="collection-item active">Category 2</a>
+						<a href="#!" class="collection-item">Category 3</a>
+						<a href="#!" class="collection-item">Category 4</a>
+					</div>
+				</div>
+			</div>
+			<div class="col s12 m9">
+			    <div class="card" id="description-card">
+			    	<div class="card-image">
+			    		<img src="<%= camp.image %>" alt="Camp Picture">
+			    	</div>
+			        <div class="card-content">
+			        	<h4 class="card-title" id="description-title"><strong><%= camp.name %></strong> - $9.00/Night</h4>
+				        <%- camp.description %>
+			        </div>
+			    </div>
+			    <h4 class="center-align white-text">Comments</h4>
+			    <% camp.comments.forEach(function(comment){ %>
+				    <div class="card card-comment">
+				    	<div class="card-content">
+							<span class="chip"><strong><em><%= comment.author %></em></strong></span>
+							<span class="comment-date-counter">10 Days ago</span>
+							<p><%= comment.text %></p>
+				    	</div>
+				    </div>
+	    		<% }); %>
+	    		<a class="waves-effect waves-light btn pink center-align" href="/campgrounds/<%= camp._id %>/comments/new" id="newCommentBtn"><i class="material-icons right">comment</i>New Comment</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<% include ../partials/footer %>

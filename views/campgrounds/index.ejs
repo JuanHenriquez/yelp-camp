@@ -1,4 +1,4 @@
-<% include partials/header %>
+<% include ../partials/header %>
 
 
 <div class="parallax-container" id="campground-parallax">
@@ -20,10 +20,15 @@
                     <div class="card">
                         <div class="card-image">
                             <img src="<%= camp.image %>" alt="Imagen"/>
-                            <span class="card-title"><a><%= camp.name %></a></span>
+                            <div class="card-bg-overlay">
+                                <span class="card-title"><%= camp.name %></span>
+                            </div>
                         </div>
                         <div class="card-content">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta, qui!</p>
+                            <p><%- camp.description.substring(0, 100) %>...</p>
+                        </div>
+                        <div class="card-action">
+                            <a href="campgrounds/<%= camp._id %>" class="waves-effect waves-ligth btn-flat grey-text text-darken-4">See more</a>
                         </div>
                     </div>
                 </div>
@@ -32,4 +37,4 @@
     </div>
 </div>
 
-<% include partials/footer %>
+<% include ../partials/footer %>
