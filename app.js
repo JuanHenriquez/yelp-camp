@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // ===============
 
 // Connect to the mongodb database.
-mongoose.connect('mongodb://localhost/yelp_camp');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/yelp_camp');
 
 // =============
 // ROUTES ======
