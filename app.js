@@ -1,16 +1,33 @@
 // Requier all the dependences.
-var express    = require('express'),
-    bodyParser = require('body-parser'),
-    mongoose   = require('mongoose'),
-    seedDB     = require('./seeds');
+var express               = require('express'),
+    bodyParser            = require('body-parser'),
+    mongoose              = require('mongoose'),
+    passport              = require('passport'),
+    seedDB                = require('./seeds'),
+    LocalStrategy         = require('passport-local'),
+    passportLocalMongoose = require('passport-local-mongoose');
+
+// ===============
+// DB Setup ======
+// ===============
+
+// Connect to the mongodb database.
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/yelp_camp');
+
+// ===============
+// App Setup ======
+// ===============
 
 // Set the app
 var app = express();
+
+// Create fake data to display.
 seedDB();
 
 // Require Models.
 var Campground = require('./models/campground'),
-    Comment    = require('./models/comment');
+    Comment    = require('./models/comment'),
+    User       = require('./models/user');
 
 // Serve the assets like css, js and fonts files.
 app.use(express.static(__dirname + '/public'));
@@ -19,12 +36,20 @@ app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 
-// ===============
-// DB Setup ======
-// ===============
+// =====================
+// Passport Setup ======
+// =====================
+app.use(require('express-session')({
+    secret: "The world is yours",
+    resave: false,
+    saveOnInitialized: false
+}));
+app.use( passport.initilized() );
+app.use( passport.session() );
+passport.use( new LocalStrategy(User.authenticated));
+passport.serializeUser( User.serializeUser() );
+passport.deserializeUser( User.deserializeUser() );
 
-// Connect to the mongodb database.
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/yelp_camp');
 
 // =============
 // ROUTES ======
