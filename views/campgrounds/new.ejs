@@ -15,15 +15,15 @@
 					<form action="/campgrounds" method="post" id="newCampgroundForm" class="card">
 					    <div class="card-content">
 					    	<div class="input-field col s12">
-					    		<input type="text" name="name" id="name" />
+					    		<input type="text" name="camp[name]" id="name" />
 					    		<label for="name">Last Name</label>
 					    	</div>
 					    	<div class="input-field col s12">
-					    		<input type="text" name="img" id="picture" />
-					    		<label for="picture">Last Name</label>
+					    		<input type="text" name="camp[image]" id="picture" />
+					    		<label for="picture">Picture</label>
 					    	</div>
 					    	<div class="input-field col s12">
-					    		<textarea name="desc" id="desc" class="materialize-textarea"></textarea>
+					    		<textarea name="camp[description]" id="desc" class="materialize-textarea"></textarea>
 					    		<label for="desc">Description</label>
 					    	</div>
 					    	<button type="submit" class="btn waves-effect waves-dark teal darken-3" id="btnSubmitForm">Send</button>
