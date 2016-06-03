@@ -22,17 +22,19 @@
 			    		<img src="<%= camp.image %>" alt="Camp Picture">
 			    	</div>
 			        <div class="card-content">
-			        	<h4 class="card-title" id="description-title"><strong><%= camp.name %></strong> - $9.00/Night</h4>
+			        	<h4 class="card-title" id="description-title"><strong><%= camp.name %></strong> - by <%= camp.author.username %><span class="chip chip-price">$9.99</span></h4>
 				        <%- camp.description %>
+				        <br><br>
+				        <a href="/campgrounds/<%= camp._id %>/edit" class="btn pink waves-effect waves-light">Edit</a>
 			        </div>
 			    </div>
 			    <h4 class="center-align white-text">Comments</h4>
 			    <% camp.comments.forEach(function(comment){ %>
 				    <div class="card card-comment">
 				    	<div class="card-content">
-							<span class="chip"><strong><em><%= comment.author %></em></strong></span>
+							<span class="chip"><strong><em><%= comment.author.username %></em></strong></span>
 							<span class="comment-date-counter">10 Days ago</span>
-							<p><%= comment.text %></p>
+							<p class="comment-text"><%= comment.text %></p>
 				    	</div>
 				    </div>
 	    		<% }); %>
