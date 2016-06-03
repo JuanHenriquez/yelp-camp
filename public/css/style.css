@@ -67,10 +67,6 @@ nav i {
     font-size: 1rem!important;
 }
 
-p {
-    margin: 50px 0;
-}
-
 .navbar-fixed {
     z-index: 10000000;
 }
@@ -199,12 +195,22 @@ HEADER
   margin: 0 auto;
 }
 
+.comment-text {
+  margin: 50px 0;
+}
+
 .without-margin {
   margin: 0;
 }
 
 .card-comment .chip {
   margin-bottom: 10px;
+}
+
+.chip-price {
+  background-color: #8bc34a;
+  margin-left: 15px;
+  padding-bottom: 10px;
 }
 
 .comment-date-counter {
