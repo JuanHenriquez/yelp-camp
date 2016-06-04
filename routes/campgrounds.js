@@ -76,7 +76,7 @@ router.get('/:id/edit', checkCampgroundOwnership, function(req, res){
 
 
 // UPDATE
-router.put('/:id', isLoggedIn, function(req, res) {
+router.put('/:id', checkCampgroundOwnership, function(req, res) {
     Campground.findByIdAndUpdate( req.params.id, req.body.camp, function( err, camp ) {
         if (err) {
             console.log('Error: ' + err);
@@ -88,7 +88,7 @@ router.put('/:id', isLoggedIn, function(req, res) {
 });
 
 // DESTROY
-router.delete('/:id', isLoggedIn, function(req, res) {
+router.delete('/:id', checkCampgroundOwnership, function(req, res) {
     Campground.findByIdAndRemove(req.params.id, function(err, camp) {
         if (err) {
             console.log('Error: ' + err);
