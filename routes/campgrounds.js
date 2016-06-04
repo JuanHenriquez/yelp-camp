@@ -66,15 +66,10 @@ router.get('/:id', function(req, res) {
 });
 
 // EDIT
-router.get('/:id/edit', isLoggedIn, function(req, res){
+router.get('/:id/edit', checkCampgroundOwnership, function(req, res){
 
     Campground.findById( req.params.id, function(err, camp) {
-        if (err) {
-            console.log('Error: ' + err);
-            res.redirect('/campgrounds');
-        } else {
-            res.render('campgrounds/edit', { campground: camp });
-        }
+        pres.render('campgrounds/edit', { campground: camp });
     });
 
 });
@@ -110,6 +105,29 @@ function isLoggedIn(req, res, next) {
         return next();
     }
     res.redirect("/login");
+}
+
+function checkCampgroundOwnership(req, res, next) {
+    // if user is authenticated
+    if ( req.isAuthenticated() ) {
+        Campground.findById( req.params.id, function( err, camp ) {
+            if (err) {
+                console.log('Error: ' + err);
+                res.redirect('back');
+            } else {
+                // if the current user is the ownership of the campground
+                if ( camp.author.id.equals(req.user._id) ) {
+                    next();
+                } else {
+                    console.log(req.user.username + ' you not have permission to do that.\n');
+                    res.redirect('back');
+                }
+            }
+        });
+    } else {
+        console.log('You need to log in\n');
+        res.redirect('back');
+    }
 }
 
 module.exports = router;
