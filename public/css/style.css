@@ -195,8 +195,9 @@ HEADER
   margin: 0 auto;
 }
 
-.comment-text {
-  margin: 50px 0;
+.btn-control {
+    margin-top: 10px;
+    display: inline-block;
 }
 
 .without-margin {
@@ -217,7 +218,8 @@ HEADER
   float: right;
 }
 
-#description-card.card .card-content p {
+#description-card.card .card-content p,
+.card-content .comment-text p {
   margin: 15px 0;
 }
 
