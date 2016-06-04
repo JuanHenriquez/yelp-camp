@@ -16,12 +16,24 @@ router.get('/', function(req, res){
     });
 } );
 
-// NEW - Display form to make a camp.
+
+// RESTFUL ROUTES.
+//  Name    |     Path              | Http Verb |              Purpose                     | Mongoose Method.
+//  -------------------------------------------------------------------------------------------------------------------------
+//  New     | /campgrounds/new      |    GET    | Show new campground form                 |    N/A
+//  Create  | /campgrounds          |    POST   | Create new campground and redirect       |    Campground.create()
+//  Show    | /campgrounds/:id      |    GET    | Show info about one specific Camp        |    Campground.findById()
+//  Edit    | /campgrounds/:id/edit |    GET    | Show edit campground form                |    Campground.findById()
+//  Update  | /campgrounds/:id      |    PUT    | Upadte a particular camp, then redirect  |    Campground.findByIdAndUpdate() 
+//  Destroy | /campgrounds/:id      |    DELETE | Destroy a particular camp, then redirect |    Campground.findByIdAndRemove()
+// ---------------------------------------------------------------------------------------------------------------------------
+
+// NEW
 router.get('/new', isLoggedIn, function(req, res){
     res.render('campgrounds/new');
 });
 
-// CREATE - Add a new camp to the DB.
+// CREATE
 router.post('/', isLoggedIn, function(req, res){
     // Get the data from the Request Body.
     var camp = req.body.camp;
@@ -34,14 +46,14 @@ router.post('/', isLoggedIn, function(req, res){
         if (err) {
             console.log('ERROR: ' + err);
         } else {
-            console.log('Added new campground: ' + data.name);
+            console.log('Added new campground: ' + data.name + '\n');
             // Redirect back to the campgrounds page.
             res.redirect('/campgrounds');
         }
     });
 });
 
-// SHOW - show info about one camp.
+// SHOW
 router.get('/:id', function(req, res) {
     var id = req.params.id;
     Campground.findById(id).populate('comments').exec(function(err, data){
@@ -53,7 +65,7 @@ router.get('/:id', function(req, res) {
     });
 });
 
-// EDIT - Show edit form to update a campground.
+// EDIT
 router.get('/:id/edit', isLoggedIn, function(req, res){
 
     Campground.findById( req.params.id, function(err, camp) {
@@ -68,7 +80,7 @@ router.get('/:id/edit', isLoggedIn, function(req, res){
 });
 
 
-// UPDATE - Route to update a forrm. 
+// UPDATE
 router.put('/:id', isLoggedIn, function(req, res) {
     Campground.findByIdAndUpdate( req.params.id, req.body.camp, function( err, camp ) {
         if (err) {
@@ -76,6 +88,18 @@ router.put('/:id', isLoggedIn, function(req, res) {
             res.redirect('/campgrounds');
         } else {
             res.redirect('/campgrounds/' + req.params.id);
+        }
+    });
+});
+
+// DESTROY
+router.delete('/:id', isLoggedIn, function(req, res) {
+    Campground.findByIdAndRemove(req.params.id, function(err, camp) {
+        if (err) {
+            console.log('Error: ' + err);
+        } else {
+            console.log('Campground: ' + camp.name + ' has been removed.\n');
+            res.redirect('/campgrounds');
         }
     });
 });
