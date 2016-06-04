@@ -21,7 +21,7 @@
                             <li><a href="/login"><i class="tiny material-icons right">person</i>Log in</a></li>
                             <li><a href="/register"><i class="tiny material-icons right">add</i>Sign Up</a></li>
                             <% } else { %>
-                            <li><a class="dropdown-button" href="#!" data-activates="dropdown-profile"><img class="picture-profile" src="/img/user_pictures/<%= user.picture %>" alt="" /> <%= user.username %><i class="material-icons right">arrow_drop_down</i></a></li>
+                            <li><a class="dropdown-button" href="#!" data-activates="dropdown-profile"><img class="picture-profile" src="<%= user.picture %>" alt="" /> <%= user.username %><i class="material-icons right">arrow_drop_down</i></a></li>
                             <% } %>
                         </ul>
 
