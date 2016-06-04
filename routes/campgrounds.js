@@ -69,7 +69,7 @@ router.get('/:id', function(req, res) {
 router.get('/:id/edit', checkCampgroundOwnership, function(req, res){
 
     Campground.findById( req.params.id, function(err, camp) {
-        pres.render('campgrounds/edit', { campground: camp });
+        res.render('campgrounds/edit', { campground: camp });
     });
 
 });
