@@ -6,7 +6,7 @@ var mime     = require('mime');
 var User     = require('../models/user');
 var passport = require('passport');
 
-// Config multer for upload pictures.
+/*// Config multer for upload pictures.
 var uploading = multer({
     limits: { fileSize: 10000000, files: 1},
     storage: multer.diskStorage({
@@ -19,7 +19,7 @@ var uploading = multer({
             });
         }
     })
-});
+});*/
 
 router.get('/', function(req, res){
     res.render('home');
@@ -32,13 +32,13 @@ router.get('/register', function(req, res) {
 });
 
 // New - Register a user
-router.post('/register', uploading.single('picture'), function(req, res, next) {
+router.post('/register', function(req, res, next) {
     var newUser = new User({
         username: req.body.username,
         name: req.body.name,
         age: req.body.age,
         email: req.body.email,
-        picture: req.file.filename
+        picture: req.body.picture
     });
     User.register(newUser, req.body.password, function(err, user){
         if (err) {
