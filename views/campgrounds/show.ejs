@@ -25,7 +25,7 @@
 			        	<h4 class="card-title" id="description-title"><strong><%= camp.name %></strong> - by <%= camp.author.username %><span class="chip chip-price">$9.99</span></h4>
 				        <%- camp.description %>
 				        <% if(user && user._id.equals(camp.author.id)) { %>
-				        <a href="/campgrounds/<%= camp._id %>/edit" class="btn pink waves-effect waves-light btn-control">Edit</a>
+				        <a href="/campgrounds/<%= camp._id %>/edit" class="btn blue waves-effect waves-light btn-control">Edit</a>
 				        <form action="/campgrounds/<%= camp._id %>?_method=DELETE" method="POST" style="display: inline-block;">
 				        	<button type="send" class="btn red waves-effect waves-light btn-control">Delete</button>
 				        </form>
@@ -39,6 +39,12 @@
 							<span class="chip"><strong><em><%= comment.author.username %></em></strong></span>
 							<span class="comment-date-counter">10 Days ago</span>
 							<div class="comment-text"><%- comment.text %></div>
+							<% if(user && comment.author.id.equals(user._id)) { %>
+							<a href="/campgrounds/<%= camp._id %>/comments/<%= comment._id %>/edit" class="btn blue waves-effect waves-light btn-control">Edit</a>
+							<form action="/campgrounds/<%= camp._id %>/comments/<%= comment._id %>?_method=DELETE" method="post" style="display: inline-block;">
+								<button type="submit" class="btn red waves-effect waves-light btn-control">Delete</button>
+							</form>
+							<% } %>
 				    	</div>
 				    </div>
 	    		<% }); %>
