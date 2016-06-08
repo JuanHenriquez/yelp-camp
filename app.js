@@ -5,6 +5,7 @@
         bodyParser            = require('body-parser'),
         mongoose              = require('mongoose'),
         passport              = require('passport'),
+        flash                 = require('connect-flash'),
         seedDB                = require('./seeds'),
         LocalStrategy         = require('passport-local'),
         passportLocalMongoose = require('passport-local-mongoose'),
@@ -33,6 +34,7 @@
     // Configure the app:
     app.set('view engine', 'ejs');
     app.use(bodyParser.urlencoded({ extended: true }));
+    app.use(flash());
 
     // Setup method override package.
     app.use(methodOverride( "_method" ));

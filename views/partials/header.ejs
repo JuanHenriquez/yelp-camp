@@ -30,6 +30,17 @@
                         </ul>
 
                         <ul class="side-nav" id="mobile-demo">
+                            <!-- User Info -->
+                            <% if(user){ %>
+                                <li id="user-container">
+                                    <div class="bg-overlay-info">
+                                        <img src="<%= user.picture %>" alt="User picture">
+                                        <h6><%= user.username %></h6>
+                                    </div>
+                                </li>
+                            <% } %>
+                            <!-- End User Info -->
+
                             <li><a href="/campgrounds">Campgrounds</a></li>
                             <% if(!user){ %>
                             <li><a href="/login"><i class="tiny material-icons right">person</i>Log in</a></li>

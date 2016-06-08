@@ -20,10 +20,14 @@
 			    <div class="card" id="description-card">
 			    	<div class="card-image">
 			    		<img src="<%= camp.image %>" alt="Camp Picture">
+			    		<div class="chip chip-price">$99.99</div>
 			    	</div>
 			        <div class="card-content">
-			        	<h4 class="card-title" id="description-title"><strong><%= camp.name %></strong> - by <%= camp.author.username %><span class="chip chip-price">$9.99</span></h4>
-				        <%- camp.description %>
+			        	<h4 class="card-title" id="description-title"><strong><%= camp.name %></strong></h4>
+			        	<h6 id="camp-author">By @<%= camp.author.username %></h6>
+			        	<div id="description-text">
+				        	<%- camp.description %>
+			        	</div>
 				        <% if(user && user._id.equals(camp.author.id)) { %>
 				        <a href="/campgrounds/<%= camp._id %>/edit" class="btn blue waves-effect waves-light btn-control">Edit</a>
 				        <form action="/campgrounds/<%= camp._id %>?_method=DELETE" method="POST" style="display: inline-block;">
